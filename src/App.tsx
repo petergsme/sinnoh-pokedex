@@ -3,12 +3,13 @@ import pokemon_logo_dark from './assets/Pokemon-logo-dark.svg';
 import classNames from 'classnames/bind';
 import theme from './App.module.scss';
 import { Button } from './components/Button/Button';
+import { ThemeProvider } from './contexts/ThemeContext/ThemeProvider';
 
 const cx = classNames.bind(theme);
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <div className={cx('align-end', 'color-switch-block')}>
         <Button onClick={() => console.log('hambre')}>Judías</Button>
         <Button onClick={() => console.log('hambre')}>
@@ -27,7 +28,7 @@ function App() {
         latter explores the region's earlier history when it was still known as Hisui. It was the fourth core series
         region to be introduced.
       </p>
-    </>
+    </ThemeProvider>
   );
 }
 

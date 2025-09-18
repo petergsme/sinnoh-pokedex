@@ -34,11 +34,11 @@
 
   //NESTED COLOR CLASSES
   &__color {
-    &--light {
+    &--onlight {
       color: var(--icon-primary-lightmode);
     }
 
-    &--dark {
+    &--ondark {
       color: var(--icon-primary-darkmode);
     }
   }
