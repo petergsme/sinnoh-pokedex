@@ -1,8 +1,7 @@
-import { Icon } from './assets/icons/Icon';
 import pokemon_logo_dark from './assets/Pokemon-logo-dark.svg';
 import classNames from 'classnames/bind';
 import theme from './App.module.scss';
-import { Button } from './components/Button/Button';
+import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
 import { ThemeProvider } from './contexts/ThemeContext/ThemeProvider';
 
 const cx = classNames.bind(theme);
@@ -10,12 +9,7 @@ const cx = classNames.bind(theme);
 function App() {
   return (
     <ThemeProvider>
-      <div className={cx('align-end', 'color-switch-block')}>
-        <Button onClick={() => console.log('hambre')}>Judías</Button>
-        <Button onClick={() => console.log('hambre')}>
-          <Icon icon="Moon" size="small" />
-        </Button>
-      </div>
+      <ThemeSwitcher />
 
       <header>
         <img src={pokemon_logo_dark} alt="pokemon logo outlined" title="Pokemon logo" className={cx('pokemon-logo')} />

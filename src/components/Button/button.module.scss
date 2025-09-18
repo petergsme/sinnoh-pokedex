@@ -1,5 +1,14 @@
 // CLASES DEL BOTÓN CLÁSICO.
 
+@mixin active-element-state {
+  color: var(--text-onprimary-darkmode);
+  background: var(--bg-activeElement);
+
+  & * {
+    color: var(--text-onprimary-darkmode);
+  }
+}
+
 .btn {
   width: fit-content;
   min-height: 48px;
@@ -24,13 +33,12 @@
     background-color: var(--bg-secondary-darkmode);
   }
 
-  &:hover {
-    color: var(--text-onprimary-darkmode);
-    background: var(--bg-activeElement);
-    transform: translateY(-3px);
+  &--color-toggled {
+    @include active-element-state;
+  }
 
-    & * {
-      color: var(--text-onprimary-darkmode);
-    }
+  &:hover {
+    @include active-element-state;
+    transform: translateY(-1px);
   }
 }

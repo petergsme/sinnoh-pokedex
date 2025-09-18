@@ -7,12 +7,16 @@ const cx = classNames.bind(theme);
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
+  toggle: boolean;
 }
 
-export const Button = ({ onClick, children }: ButtonProps) => {
+export const Button = ({ onClick, children, toggle = false }: ButtonProps) => {
   const { theme } = useTheme();
 
-  const buttonClass = cx('btn', 'paragraph-s-medium', { [`btn--color-darkmode`]: theme === 'darkmode' });
+  const buttonClass = cx('btn', 'paragraph-s-medium', {
+    [`btn--color-darkmode`]: theme === 'darkmode',
+    [`btn--color-toggled`]: toggle,
+  });
 
   return (
     <>
