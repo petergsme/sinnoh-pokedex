@@ -1,0 +1,45 @@
+@use '../../styles/mixins' as *;
+
+//ICON STYLES
+@mixin icon-size($size: var(--icon-24)) {
+  width: $size;
+  height: $size;
+}
+
+.icon {
+  //COMMON
+  @include icon-size();
+  color: var(--icon-primary-lightmode);
+  display: inline-block;
+  flex-shrink: 0;
+
+  & * {
+    fill: currentColor;
+  }
+
+  //NESTED SIZE CLASSES
+  &__size {
+    &--small {
+      @include icon-size(var(--icon-24));
+    }
+
+    &--medium {
+      @include icon-size(var(--icon-32));
+    }
+
+    &--large {
+      @include icon-size(var(--icon-48));
+    }
+  }
+
+  //NESTED COLOR CLASSES
+  &__color {
+    &--light {
+      color: var(--icon-primary-lightmode);
+    }
+
+    &--dark {
+      color: var(--icon-primary-darkmode);
+    }
+  }
+}
