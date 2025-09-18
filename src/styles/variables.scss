@@ -1,0 +1,144 @@
+//CUSTOM PROPERTIES
+
+:root {
+  //COLORS
+  //Neutral colors - white
+  --white-100-main: hsla(60, 100%, 99%, 1);
+  --white-100-hsl: 60, 100%, 99%;
+
+  //Core colors - purple
+  --purple-200: hsla(280, 66%, 90%, 1);
+  --purple-300-main: hsla(260, 78%, 60%, 1);
+  --purple-400: hsla(290, 58%, 62%, 1);
+  --purple-800: hsla(270, 83%, 20%, 1);
+  --purple-800-hsl: 270, 83%, 20%;
+  --purple-900: hsla(270, 75%, 11%, 1);
+  --purple-900-hsl: 270, 75%, 11%;
+
+  //Core colors - yellow
+  --yellow-200: hsla(50, 85%, 80%, 1);
+  --yellow-700: hsla(50, 82%, 21%, 1);
+
+  //Pokemon type colors
+  --bug-type: hsla(68, 64%, 43%, 1);
+  --dark-type: hsla(30, 23%, 36%, 1);
+  --dragon-type: hsla(250, 92%, 59%, 1);
+  --electric-type: hsla(48, 94%, 59%, 1);
+  --fighting-type: hsla(4, 65%, 45%, 1);
+  --fire-type: hsla(25, 88%, 59%, 1);
+  --flying-type: hsla(248, 73%, 75%, 1);
+  --ghost-type: hsla(255, 26%, 49%, 1);
+  --grass-type: hsla(100, 50%, 45%, 1);
+  --ground-type: hsla(42, 64%, 54%, 1);
+  --ice-type: hsla(180, 25%, 61%, 1);
+  --normal-type: hsla(60, 21%, 58%, 1);
+  --poison-type: hsla(300, 43%, 44%, 1);
+  --psychic-type: hsla(340, 90%, 75%, 1);
+  --rock-type: hsla(45, 49%, 47%, 1);
+  --steel-type: hsla(240, 14%, 66%, 1);
+  --water-type: hsla(218, 87%, 75%, 1);
+
+  //OPACITY VALUES
+  --opacity-12: 0.12;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-50: 0.5;
+  --opacity-75: 0.75;
+
+  //TYPOGRAPHY SYSTEM
+  //Font families
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  //Font sizes
+  --font-size-16: 16px;
+  --font-size-20: 20px;
+  --font-size-32: 32px;
+
+  //Font weights
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  //Line heights
+  --line-height-24: 24px;
+
+  //Letter spacing
+  --font-tracking-2: 2px;
+  --font-tracking-5: 5px;
+  --font-tracking-10: 10px;
+
+  //Text colors
+  --text-onprimary-lightmode: var(--purple-800);
+  --text-onprimary-darkmode: var(--white-100-main);
+
+  //SPACING FOUNDATIONp
+  //Base space values
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-60: 60px;
+  --space-80: 80px;
+
+  //Base size values
+  --size-24: 24px;
+  --size-32: 32px;
+  --size-48: 48px;
+  --size-50: 50px;
+  --size-100: 100px;
+  --size-150: 150px;
+  --size-390: 390px;
+  --size-900: 900px;
+
+  //COMPONENT SPACING
+  //Padding
+  --padding-8: var(--space-8);
+  --padding-12: var(--space-12);
+  --padding-20: var(--space-20);
+  --padding-24: var(--space-24);
+  --padding-40: var(--space-40);
+  --padding-60: var(--space-60);
+  --padding-80: var(--space-80);
+
+  //Gap
+  --gap-8: var(--space-8);
+  --gap-12: var(--space-12);
+  --gap-20: var(--space-20);
+  --gap-24: var(--space-24);
+  --gap-28: var(--space-28);
+  --gap-40: var(--space-40);
+  --gap-60: var(--space-60);
+
+  //BORDERS & LAYOUT
+  //Border radius
+  --border-radius-12: var(--space-12);
+  --border-radius-32: var(--space-32);
+
+  //ICONS
+  //Icon sizes
+  --icon-24: var(--size-24);
+  --icon-32: var(--size-32);
+  --icon-48: var(--size-48);
+
+  //Icon colors
+  --icon-primary-lightmode: var(--text-primary-lightmode);
+  --icon-primary-darkmode: var(--white-100-main);
+
+  //BACKGROUNDS
+  --bg-primary-lightmode: linear-gradient(135deg, var(--yellow-200) 0%, var(--purple-200) 100%);
+  --bg-primary-darkmode: linear-gradient(135deg, var(--yellow-700) 0%, var(--purple-800) 100%);
+  --bg-secondary-lightmode: hsla(var(--white-100-hsl), var(--opacity-30));
+  --bg-secondary-darkmode: hsla(var(--white-100-hsl), var(--opacity-20));
+  --bg-overlay-lightmode: hsla(var(--purple-900-hsl), var(--opacity-75));
+  --bg-overlay-darkmode: hsla(var(--purple-900-hsl), var(--opacity-50));
+  --bg-activeElement: linear-gradient(135deg, var(--purple-300-main) 0%, var(--purple-400) 100%);
+
+  //DROP SHADOWS
+  --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-12));
+  --drop-shadow-white: hsla(var(--white-100-hsl), var(--opacity-12));
+}

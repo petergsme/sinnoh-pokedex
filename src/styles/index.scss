@@ -1,0 +1,13 @@
+@use './reset' as *;
+@use './variables' as *;
+@use './utilities' as *;
+
+//ENTRY POINT CSS
+body {
+  font-family: var(--font-family-body);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary-lightmode);
+  color: var(--text-onprimary-lightmode);
+}
