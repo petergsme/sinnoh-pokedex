@@ -5,9 +5,18 @@
 //ENTRY POINT CSS
 body {
   font-family: var(--font-family-body);
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
   background-image: var(--bg-primary-lightmode);
   color: var(--text-onprimary-lightmode);
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--size-900);
+  padding: var(--padding-80) var(--padding-20);
+  margin: 0 auto;
+  gap: var(--gap-60);
+  align-items: center;
 }
