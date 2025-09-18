@@ -1,16 +1,6 @@
-import { createContext, useState } from 'react';
-
-interface ThemeContextType {
-  theme: 'lightmode' | 'darkmode';
-  setLightMode: () => void;
-  setDarkMode: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-interface ThemeProviderProps {
-  children: React.ReactNode;
-}
+import { ThemeContext } from './ThemeContext';
+import type { ThemeProviderProps } from './ThemeContext';
+import { useState } from 'react';
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<'lightmode' | 'darkmode'>('lightmode');

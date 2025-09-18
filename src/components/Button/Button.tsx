@@ -1,3 +1,4 @@
+import { useTheme } from '../../contexts/Themecontext';
 import classNames from 'classnames/bind';
 import theme from './button.module.scss';
 
@@ -9,7 +10,9 @@ interface ButtonProps {
 }
 
 export const Button = ({ onClick, children }: ButtonProps) => {
-  const buttonClass = cx('btn', `btn--color-darkmodeneedscontext`, 'paragraph-s-medium');
+  const { theme } = useTheme();
+
+  const buttonClass = cx('btn', `btn--color-${theme}`, 'paragraph-s-medium');
 
   return (
     <>
