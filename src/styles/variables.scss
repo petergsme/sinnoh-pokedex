@@ -130,13 +130,13 @@
   --icon-primary-darkmode: var(--white-100-main);
 
   //BACKGROUNDS
-  --bg-primary-lightmode: linear-gradient(180deg, var(--yellow-200) 0%, var(--purple-200) 100%);
-  --bg-primary-darkmode: linear-gradient(135deg, var(--yellow-700) 0%, var(--purple-800) 100%);
+  --bg-primary-lightmode: linear-gradient(165deg, var(--yellow-200) 0%, var(--purple-200) 100%);
+  --bg-primary-darkmode: linear-gradient(165deg, var(--yellow-700) 0%, var(--purple-800) 100%);
   --bg-secondary-lightmode: hsla(var(--white-100-hsl), var(--opacity-30));
   --bg-secondary-darkmode: hsla(var(--white-100-hsl), var(--opacity-20));
   --bg-overlay-lightmode: hsla(var(--purple-900-hsl), var(--opacity-75));
   --bg-overlay-darkmode: hsla(var(--purple-900-hsl), var(--opacity-50));
-  --bg-activeElement: linear-gradient(135deg, var(--purple-300-main) 0%, var(--purple-400) 100%);
+  --bg-activeElement: linear-gradient(165deg, var(--purple-300-main) 0%, var(--purple-400) 100%);
 
   //DROP SHADOWS
   --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-8));

@@ -6,7 +6,7 @@
 body {
   font-family: var(--font-family-body);
   min-height: 100vh;
-  background-image: var(--bg-primary-lightmode);
+  background: var(--bg-primary-lightmode);
   color: var(--text-onprimary-lightmode);
   margin: 0;
 }

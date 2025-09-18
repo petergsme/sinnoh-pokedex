@@ -10,6 +10,8 @@
   letter-spacing: var(--font-tracking-10);
   text-transform: uppercase;
   line-height: normal;
+  margin-right: -20px;
+  // Letter spacing adds extra space after the last letter, people have been complaining for years. We counter it by adding negative margins.
 }
 
 .display-label-regular {
@@ -76,4 +78,10 @@
 .align-end {
   width: 100%;
   text-align: end;
+}
+
+// THEMECHANGE
+.body--color-darkmode {
+  background: var(--bg-primary-darkmode);
+  color: var(--text-onprimary-darkmode);
 }
