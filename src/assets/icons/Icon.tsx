@@ -14,7 +14,7 @@ interface IconProps {
   extraClass?: string;
 }
 
-export const Icon = ({ icon, size = 'small', color = 'light', extraClass }: IconProps) => {
+export const Icon = ({ icon, size = 'small', color, extraClass }: IconProps) => {
   return (
     <span
       className={cx(

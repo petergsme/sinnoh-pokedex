@@ -2,15 +2,18 @@ import { Icon } from './assets/icons/Icon';
 import pokemon_logo_dark from './assets/Pokemon-logo-dark.svg';
 import classNames from 'classnames/bind';
 import theme from './App.module.scss';
+import { Button } from './components/Button/Button';
 
 const cx = classNames.bind(theme);
 
 function App() {
   return (
     <>
-      <div className={cx('align-end')}>
-        <Icon icon="Sun" color="light" size="small" />
-        <Icon icon="Moon" color="light" size="small" />
+      <div className={cx('align-end', 'color-switch-block')}>
+        <Button onClick={() => console.log('hambre')}>Judías</Button>
+        <Button onClick={() => console.log('hambre')}>
+          <Icon icon="Moon" size="small" />
+        </Button>
       </div>
 
       <header>

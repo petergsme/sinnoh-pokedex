@@ -1,0 +1,36 @@
+// CLASES DEL BOTÓN CLÁSICO.
+
+.btn {
+  width: fit-content;
+  min-height: 48px;
+  padding: var(--padding-12);
+  border-radius: var(--border-radius-12);
+  cursor: pointer;
+  border: none;
+
+  transition: all 0.1s ease;
+
+  box-shadow: inset 0px 0px 1px 1px var(--drop-shadow-black);
+
+  color: var(--text-onprimary-lightmode);
+  background-color: var(--bg-secondary-lightmode);
+
+  & span {
+    vertical-align: sub;
+  }
+
+  &--color-darkmode {
+    color: var(--text-onprimary-darkmode);
+    background-color: var(--bg-secondary-darkmode);
+  }
+
+  &:hover {
+    color: var(--text-onprimary-darkmode);
+    background: var(--bg-activeElement);
+    transform: translateY(-3px);
+
+    & * {
+      color: var(--text-onprimary-darkmode);
+    }
+  }
+}

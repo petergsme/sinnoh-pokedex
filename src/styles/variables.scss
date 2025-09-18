@@ -39,7 +39,7 @@
   --water-type: hsla(218, 87%, 75%, 1);
 
   //OPACITY VALUES
-  --opacity-12: 0.12;
+  --opacity-8: 0.08;
   --opacity-20: 0.2;
   --opacity-30: 0.3;
   --opacity-50: 0.5;
@@ -130,7 +130,7 @@
   --icon-primary-darkmode: var(--white-100-main);
 
   //BACKGROUNDS
-  --bg-primary-lightmode: linear-gradient(135deg, var(--yellow-200) 0%, var(--purple-200) 100%);
+  --bg-primary-lightmode: linear-gradient(180deg, var(--yellow-200) 0%, var(--purple-200) 100%);
   --bg-primary-darkmode: linear-gradient(135deg, var(--yellow-700) 0%, var(--purple-800) 100%);
   --bg-secondary-lightmode: hsla(var(--white-100-hsl), var(--opacity-30));
   --bg-secondary-darkmode: hsla(var(--white-100-hsl), var(--opacity-20));
@@ -139,6 +139,6 @@
   --bg-activeElement: linear-gradient(135deg, var(--purple-300-main) 0%, var(--purple-400) 100%);
 
   //DROP SHADOWS
-  --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-12));
-  --drop-shadow-white: hsla(var(--white-100-hsl), var(--opacity-12));
+  --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-8));
+  --drop-shadow-white: hsla(var(--white-100-hsl), var(--opacity-8));
 }
