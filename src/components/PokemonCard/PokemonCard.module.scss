@@ -1,0 +1,29 @@
+.pokeCard__image--size {
+  max-width: 100px;
+}
+
+.pokeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-20);
+
+  padding: var(--padding-20);
+  border-radius: var(--border-radius-12);
+
+  min-width: var(--size-150);
+
+  background-color: var(--bg-secondary-lightmode);
+  box-shadow: inset 0px 0px 1px 1px var(--drop-shadow-black);
+
+  &:hover {
+    color: var(--text-onprimary-darkmode);
+    background: var(--bg-activeElement);
+  }
+
+  &--color-darkmode {
+    background-color: var(--bg-secondary-darkmode);
+  }
+}
+
+// FALTARIAN COSAS PARA MODO LISTA Y LO OTRO. PERO VAMOS POCO A POCO.
