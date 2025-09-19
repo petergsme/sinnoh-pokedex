@@ -1,6 +1,3 @@
-@use '../../styles/mixins' as *;
-
-//ICON STYLES
 @mixin icon-size($size: var(--icon-24)) {
   width: $size;
   height: $size;
