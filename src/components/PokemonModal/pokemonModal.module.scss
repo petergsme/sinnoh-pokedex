@@ -31,17 +31,23 @@
 }
 
 .pokemonModal__card {
-  max-width: 390px;
+  width: 390px;
   padding: var(--padding-24) var(--padding-20) var(--padding-40) var(--padding-20);
-  border-radius: var(--border-radius-32);
+  border-radius: var(--border-radius-32) var(--border-radius-32) 0 0;
   background: var(--bg-primary-lightmode);
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--gap-28);
 
   animation: enterLeft 0.5s;
   animation-timing-function: cubic-bezier(0.82, 0, 0.28, 0.99);
+
+  @include tablet-up {
+    border-radius: var(--border-radius-32);
+    max-width: 50%;
+  }
 
   &--closing {
     animation: exitRight 0.5s;
