@@ -1,0 +1,90 @@
+@use '../../styles/mixins.scss' as *;
+
+.pokemonModal__background {
+  background: var(--bg-overlay-lightmode);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  touch-action: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  animation: fadeIn 0.4s;
+  animation-timing-function: cubic-bezier(0.82, 0, 0.28, 0.99);
+
+  @include tablet-up {
+    align-items: center;
+  }
+
+  &--closing {
+    animation: fadeOut 0.4s;
+  }
+
+  &--color-darkmode {
+    background: var(--bg-overlay-darkmode);
+  }
+}
+
+.pokemonModal__card {
+  max-width: 390px;
+  padding: var(--padding-24) var(--padding-20) var(--padding-40) var(--padding-20);
+  border-radius: var(--border-radius-32);
+  background: var(--bg-primary-lightmode);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-28);
+
+  animation: enterLeft 0.5s;
+  animation-timing-function: cubic-bezier(0.82, 0, 0.28, 0.99);
+
+  &--closing {
+    animation: exitRight 0.5s;
+  }
+
+  &--color-darkmode {
+    background: var(--bg-primary-darkmode);
+  }
+}
+
+// ANIMATIONS
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes enterLeft {
+  from {
+    transform: translateX(1000%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes exitRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1000%);
+  }
+}

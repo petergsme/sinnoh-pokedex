@@ -15,6 +15,7 @@
 
   background-color: var(--bg-secondary-lightmode);
   box-shadow: inset 0px 0px 1px 1px var(--drop-shadow-black);
+  cursor: pointer;
 
   &:hover {
     color: var(--text-onprimary-darkmode);
@@ -24,6 +25,9 @@
   &--color-darkmode {
     background-color: var(--bg-secondary-darkmode);
   }
+}
+
+.pokeCardDetail {
 }
 
 // FALTARIAN COSAS PARA MODO LISTA Y LO OTRO. PERO VAMOS POCO A POCO.

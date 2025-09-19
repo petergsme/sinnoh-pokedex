@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
+import type { Pokemon } from '../../models/Pokemon';
+import { PokemonModal } from '../PokemonModal/PokemonModal';
 import classNames from 'classnames/bind';
 import theme from './PokemonCard.module.scss';
-import type { Pokemon } from '../../models/Pokemon';
 
 const cx = classNames.bind(theme);
 
@@ -10,7 +12,17 @@ interface PokemonCardProps {
 }
 
 export const PokemonCard = (props: PokemonCardProps) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const { theme } = useTheme();
+
+  const handleCloseModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpenModal(false);
+      setIsClosing(false);
+    }, 300);
+  };
 
   const { pokemon } = props;
 
@@ -18,11 +30,20 @@ export const PokemonCard = (props: PokemonCardProps) => {
 
   return (
     <>
-      <article className={cx('pokeCard', { 'pokeCard--color-darkmode': theme === 'darkmode' })}>
+      <article
+        className={cx('pokeCard', { 'pokeCard--color-darkmode': theme === 'darkmode' })}
+        onClick={() => setIsOpenModal(true)}
+      >
         <p className={cx('paragraph-s-medium')}>{`No ${pokemon.id}`}</p>
         <img src={pokemon.image} alt={`${pokemon.name} image`} className={cx('pokeCard__image--size')} />
         <p className={cx('paragraph-m')}>{capitalizedName}</p>
       </article>
+
+      {isOpenModal && (
+        <PokemonModal onClose={handleCloseModal} isClosing={isClosing}>
+          <section className={cx('')}></section>
+        </PokemonModal>
+      )}
     </>
   );
 };
