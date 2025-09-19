@@ -7,7 +7,7 @@ const cx = classNames.bind(theme);
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
-  toggle: boolean;
+  toggle?: boolean;
 }
 
 export const Button = ({ onClick, children, toggle = false }: ButtonProps) => {
