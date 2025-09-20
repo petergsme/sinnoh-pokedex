@@ -10,27 +10,52 @@ import { Icon } from '../../assets/icons/Icon';
 const cx = classNames.bind(theme);
 
 export const Pokedex = () => {
+  const getLocalViewMode = () => {
+    const savedViewMode = localStorage.getItem('viewMode');
+
+    if (savedViewMode === 'grid' || savedViewMode === 'list') {
+      return savedViewMode;
+    }
+    return 'grid';
+  };
+
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
-  const [isloading, setisLoading] = useState(true);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [isloading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>(getLocalViewMode());
 
   useEffect(() => {
     const loadPokemon = async () => {
-      const startId = 387;
-      const pokemonCount = 15;
+      setError(null);
 
-      const ids = [];
-      for (let counter = 0; counter < pokemonCount; counter++) {
-        ids.push(startId + counter);
+      try {
+        const startId = 387;
+        const pokemonCount = 15;
+
+        const ids = [];
+        for (let i = 0; i < pokemonCount; i++) {
+          ids.push(startId + i);
+        }
+
+        const pokemonData = await fetchMultiplePokemon(ids);
+        setPokemon(pokemonData);
+      } catch (error) {
+        setError(`Sorry we've encountered an error: "${error}", please refresh the site`);
       }
 
-      const pokemonData = await fetchMultiplePokemon(ids);
-      setPokemon(pokemonData);
-      setisLoading(false);
+      setIsLoading(false);
     };
+
     loadPokemon();
   }, []);
-  //   WE'LL ADD ERROR HANDLING
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('viewMode', viewMode);
+    } catch (error) {
+      console.warn(`Couldn't store theme:`, error);
+    }
+  }, [viewMode]);
 
   return (
     <div className={cx('pokedex')}>
@@ -55,6 +80,10 @@ export const Pokedex = () => {
 
       {isloading ? (
         <p className={'paragraph-m'}>Loading Pokémon...</p>
+      ) : error ? (
+        <div className={cx('error-container')}>
+          <p className={'paragraph-m'}>{error}</p>
+        </div>
       ) : (
         <div className={cx(`pokedex__${viewMode}`)}>
           {pokemon.map((monster) => (
