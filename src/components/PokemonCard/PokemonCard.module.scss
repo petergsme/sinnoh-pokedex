@@ -55,6 +55,8 @@
 
   &__types {
     @include pokeCardDetail-flex-gap-20();
+    width: 100%;
+    justify-content: center;
   }
 
   &__buttons {
@@ -66,21 +68,11 @@
   &__image--size {
     max-width: 180px;
   }
-}
 
-// FALTARIAN COSAS PARA MODO LISTA Y LO OTRO. PERO VAMOS POCO A POCO.
-
-.stats {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 20px;
-
-  & progress {
-    width: 100%;
-
-    &::-webkit-progress-bar {
-      background-color: orange;
-    }
+  &__stats {
+    @include pokeCardDetail-flex-column();
+    gap: var(--gap-8);
   }
 }
+
+// MISSING LIST CHANGE CLASS.
