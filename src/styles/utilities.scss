@@ -82,11 +82,13 @@
 
 // THEMECHANGE
 .body--color-darkmode {
+  background-color: #14052e;
   background: var(--bg-primary-darkmode);
   color: var(--text-onprimary-darkmode);
   background-attachment: fixed;
 }
 
 .html--color-darkmode {
+  background-color: #14052e;
   background: var(--bg-primary-darkmode);
 }

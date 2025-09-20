@@ -5,13 +5,14 @@
 //ENTRY POINT CSS
 
 html {
+  background-color: #14052e;
   background: var(--bg-primary-lightmode);
 }
 
 body {
   font-family: var(--font-family-body);
   min-height: 100vh;
-
+  background-color: #14052e;
   background: var(--bg-primary-lightmode);
   background-attachment: fixed;
   color: var(--text-onprimary-lightmode);
