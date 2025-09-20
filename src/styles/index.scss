@@ -9,6 +9,7 @@ body {
   font-family: var(--font-family-body);
   min-height: 100vh;
   color: var(--text-onprimary-lightmode);
+  background: var(--bg-primary-lightmode);
   margin: 0;
 
   &.color-darkmode {
