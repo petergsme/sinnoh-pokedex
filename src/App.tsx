@@ -6,7 +6,7 @@ import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
 import { PokemonCard } from './components/PokemonCard/PokemonCard';
 import classNames from 'classnames/bind';
 import theme from './App.module.scss';
-import pokemon_logo_dark from './assets/Pokemon-logo-dark.svg';
+import pokemon_logo_dark from './assets/pokemon-logo-dark.svg';
 import pokemon_logo_light from './assets/pokemon-logo-light.svg';
 
 const cx = classNames.bind(theme);
@@ -24,7 +24,7 @@ function App() {
       try {
         setLoading(true);
         setError(null);
-        const pokemonData = await fetchPokemon(395);
+        const pokemonData = await fetchPokemon(398);
         setPokemon(pokemonData);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error loading pokemon');
