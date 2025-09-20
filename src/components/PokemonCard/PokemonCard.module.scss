@@ -10,25 +10,41 @@
   gap: var(--gap-20);
 }
 
-.pokeCard__image--size {
-  width: 100px;
-  height: 100px;
-}
-
 .pokeCard {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--gap-20);
-
-  padding: var(--padding-20);
   border-radius: var(--border-radius-12);
-
-  min-width: 135px;
-
   background-color: var(--bg-secondary-lightmode);
   box-shadow: 0px 0px 4px 0px var(--drop-shadow-black);
   cursor: pointer;
+
+  &__grid {
+    flex-direction: column;
+    gap: var(--gap-20);
+    padding: var(--padding-20);
+    min-width: 135px;
+
+    &-image--size {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__list {
+    padding: var(--padding-20) var(--padding-24);
+    justify-content: space-between;
+
+    &-image--size {
+      width: 50px;
+      height: 50px;
+    }
+
+    & div {
+      display: flex;
+      align-items: end;
+      gap: var(--gap-20);
+    }
+  }
 
   &:hover {
     color: var(--text-onprimary-darkmode);

@@ -13,9 +13,10 @@ const cx = classNames.bind(theme);
 
 interface PokemonCardProps {
   pokemon: Pokemon;
+  viewMode: 'grid' | 'list';
 }
 
-export const PokemonCard = (props: PokemonCardProps) => {
+export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { theme } = useTheme();
@@ -28,20 +29,31 @@ export const PokemonCard = (props: PokemonCardProps) => {
     }, 200);
   };
 
-  const { pokemon } = props;
-
   const capitalizedName = pokemon.name.slice(0, 1).toUpperCase() + pokemon.name.slice(1);
 
   return (
     <>
-      <article
-        className={cx('pokeCard', { 'pokeCard--color-darkmode': theme === 'darkmode' })}
-        onClick={() => setIsOpenModal(true)}
-      >
-        <p className={cx('paragraph-s-medium')}>{`No ${pokemon.id}`}</p>
-        <img src={pokemon.image} alt={`${pokemon.name} image`} className={cx('pokeCard__image--size')} />
-        <p className={cx('paragraph-m')}>{capitalizedName}</p>
-      </article>
+      {viewMode === 'grid' ? (
+        <article
+          className={cx('pokeCard', 'pokeCard__grid', { 'pokeCard--color-darkmode': theme === 'darkmode' })}
+          onClick={() => setIsOpenModal(true)}
+        >
+          <p className={cx('paragraph-s-medium')}>{`No ${pokemon.id}`}</p>
+          <img src={pokemon.image} alt={`${pokemon.name} image`} className={cx('pokeCard__grid-image--size')} />
+          <p className={cx('paragraph-m')}>{capitalizedName}</p>
+        </article>
+      ) : (
+        <article
+          className={cx('pokeCard', 'pokeCard__list', { 'pokeCard--color-darkmode': theme === 'darkmode' })}
+          onClick={() => setIsOpenModal(true)}
+        >
+          <div>
+            <p className={cx('paragraph-s-medium')}>{`No ${pokemon.id}`}</p>
+            <p className={cx('paragraph-m')}>{capitalizedName}</p>
+          </div>
+          <img src={pokemon.image} alt={`${pokemon.name} image`} className={cx('pokeCard__list-image--size')} />
+        </article>
+      )}
 
       {isOpenModal && (
         <PokemonModal onClose={handleCloseModal} isClosing={isClosing}>

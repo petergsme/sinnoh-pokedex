@@ -23,12 +23,19 @@
   }
 }
 
+@mixin impossible-mobile {
+  @media (max-width: 323px) {
+    @content;
+  }
+}
+
 .pokedex {
   width: 100%;
 
   &__controls {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 
     & div {
       display: flex;
@@ -50,6 +57,9 @@
     }
     @include mobile {
       grid-template-columns: repeat(2, 1fr);
+    }
+    @include impossible-mobile {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 

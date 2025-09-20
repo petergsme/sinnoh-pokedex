@@ -58,7 +58,7 @@ export const Pokedex = () => {
       ) : (
         <div className={cx(`pokedex__${viewMode}`)}>
           {pokemon.map((monster) => (
-            <PokemonCard key={monster.id} pokemon={monster} />
+            <PokemonCard key={monster.id} pokemon={monster} viewMode={viewMode} />
           ))}
         </div>
       )}
