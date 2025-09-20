@@ -68,4 +68,9 @@
     flex-direction: column;
     gap: var(--gap-12);
   }
+
+  &__messages {
+    text-align: center;
+    padding: 100px 0;
+  }
 }

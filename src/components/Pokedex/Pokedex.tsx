@@ -19,10 +19,29 @@ export const Pokedex = () => {
     return 'grid';
   };
 
+  const getLocalSelectedPokemon = () => {
+    const savedSelectedPokemon = localStorage.getItem('selectedPokemon');
+
+    if (savedSelectedPokemon === 'all' || savedSelectedPokemon === 'favorites') {
+      return savedSelectedPokemon;
+    }
+    return 'all';
+  };
+
+  const getFavorites = (): number[] => {
+    const saved = localStorage.getItem('favorites');
+    if (saved) {
+      return JSON.parse(saved);
+    } else {
+      return [];
+    }
+  };
+
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   const [isloading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(getLocalViewMode());
+  const [showPokemon, setShowPokemon] = useState<'all' | 'favorites'>(getLocalSelectedPokemon());
 
   useEffect(() => {
     const loadPokemon = async () => {
@@ -32,9 +51,15 @@ export const Pokedex = () => {
         const startId = 387;
         const pokemonCount = 15;
 
-        const ids = [];
-        for (let i = 0; i < pokemonCount; i++) {
-          ids.push(startId + i);
+        let ids: number[];
+
+        if (showPokemon === 'favorites') {
+          ids = getFavorites();
+        } else {
+          ids = [];
+          for (let i = 0; i < pokemonCount; i++) {
+            ids.push(startId + i);
+          }
         }
 
         const pokemonData = await fetchMultiplePokemon(ids);
@@ -47,15 +72,23 @@ export const Pokedex = () => {
     };
 
     loadPokemon();
-  }, []);
+  }, [showPokemon]);
 
   useEffect(() => {
     try {
       localStorage.setItem('viewMode', viewMode);
     } catch (error) {
-      console.warn(`Couldn't store theme:`, error);
+      console.warn(`Couldn't store viewMode:`, error);
     }
   }, [viewMode]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('selectedPokemon', showPokemon);
+    } catch (error) {
+      console.warn(`Couldn't store selectedPokemon:`, error);
+    }
+  }, [showPokemon]);
 
   return (
     <div className={cx('pokedex')}>
@@ -71,21 +104,25 @@ export const Pokedex = () => {
         </div>
 
         <div>
-          <Button onClick={() => console.log('hola')} name="Show all Pokémon">
+          <Button onClick={() => setShowPokemon('all')} toggle={showPokemon === 'all'} name="Show all Pokémon">
             All
           </Button>
-          <Button onClick={() => console.log('hola')} name="Show favorite Pokémon">
+          <Button
+            onClick={() => setShowPokemon('favorites')}
+            toggle={showPokemon === 'favorites'}
+            name="Show favorite Pokémon"
+          >
             <Icon icon="Heart" />
           </Button>
         </div>
       </section>
 
       {isloading ? (
-        <p className={'paragraph-m'}>Loading Pokémon...</p>
+        <p className={cx('paragraph-m')}>Loading Pokémon...</p>
       ) : error ? (
-        <div className={cx('error-container')}>
-          <p className={'paragraph-m'}>{error}</p>
-        </div>
+        <p className={cx('paragraph-m')}>{error}</p>
+      ) : showPokemon === 'favorites' && pokemon.length === 0 ? (
+        <p className={cx('paragraph-m', 'pokedex__messages')}>You haven't added favorites yet</p>
       ) : (
         <div className={cx(`pokedex__${viewMode}`)}>
           {pokemon.map((monster) => (

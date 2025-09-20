@@ -49,7 +49,7 @@ export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
     }
   };
 
-  const [isFavorite, setIsFavorite] = useState(() => isPokemonFavorite(pokemon.id));
+  const [isFavorite, setIsFavorite] = useState(isPokemonFavorite(pokemon.id));
 
   const handleCloseModal = () => {
     setIsClosing(true);
