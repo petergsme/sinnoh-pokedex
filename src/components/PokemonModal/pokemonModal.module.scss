@@ -1,4 +1,8 @@
-@use '../../styles/mixins.scss' as *;
+@mixin mobile-up {
+  @media (min-width: 440px) {
+    @content;
+  }
+}
 
 .pokemonModal__background {
   background: var(--bg-overlay-lightmode);
@@ -17,7 +21,7 @@
   animation: fadeIn 0.3s;
   animation-timing-function: cubic-bezier(0.82, 0, 0.28, 0.99);
 
-  @include tablet-up {
+  @include mobile-up {
     align-items: center;
   }
 
@@ -31,7 +35,7 @@
 }
 
 .pokemonModal__card {
-  width: 390px;
+  width: 100%;
   padding: var(--padding-24) var(--padding-20) var(--padding-40) var(--padding-20);
   border-radius: var(--border-radius-32) var(--border-radius-32) 0 0;
   background: var(--bg-primary-lightmode);
@@ -44,9 +48,9 @@
   animation: enterLeft 0.4s;
   animation-timing-function: cubic-bezier(0.82, 0, 0.28, 0.99);
 
-  @include tablet-up {
+  @include mobile-up {
+    width: 390px;
     border-radius: var(--border-radius-32);
-    max-width: 50%;
   }
 
   &--closing {
