@@ -6,7 +6,7 @@ import theme from './icon.module.scss';
 
 const cx = classNames.bind(theme);
 
-type IconName = keyof typeof icons;
+export type IconName = keyof typeof icons;
 
 interface IconProps {
   icon: IconName;
