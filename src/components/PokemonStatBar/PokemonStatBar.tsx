@@ -1,7 +1,7 @@
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import { Icon, type IconName } from '../../assets/icons/Icon';
 import classNames from 'classnames/bind';
-import theme from './PokemonStatBar.module.scss';
+import theme from './pokemonStatBar.module.scss';
 
 const cx = classNames.bind(theme);
 
