@@ -34,6 +34,18 @@ function App() {
 
   return (
     <>
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '10px',
+          backgroundColor: '#14052e',
+          zIndex: -1,
+          pointerEvents: 'none',
+        }}
+      />
       <ThemeSwitcher />
 
       <header>
