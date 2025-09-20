@@ -1,19 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useTheme } from './contexts/ThemeContext/useTheme';
 import { fetchPokemon } from './services/pokeApi';
 import type { Pokemon } from './models/Pokemon';
 import { ThemeSwitcher } from './components/ThemeSwitcher/ThemeSwitcher';
 import { PokemonCard } from './components/PokemonCard/PokemonCard';
+import { PokemonLogo } from './components/PokemonLogo/PokemonLogo';
 import classNames from 'classnames/bind';
 import theme from './App.module.scss';
-import pokemon_logo_dark from './assets/pokemon-logo-dark.svg';
-import pokemon_logo_light from './assets/pokemon-logo-light.svg';
 
 const cx = classNames.bind(theme);
 
 function App() {
-  const { theme } = useTheme();
-
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,19 +32,12 @@ function App() {
     loadPokemon();
   }, []);
 
-  const isThemeLight = theme === 'lightmode';
-
   return (
     <>
       <ThemeSwitcher />
 
       <header>
-        <img
-          src={isThemeLight ? pokemon_logo_dark : pokemon_logo_light}
-          alt="pokemon logo outlined"
-          title="Pokemon logo"
-          className={cx('pokemon-logo')}
-        />
+        <PokemonLogo />
         <h1 className={cx('display-titles', 'text-align-center')}>sinnoh</h1>
       </header>
 
