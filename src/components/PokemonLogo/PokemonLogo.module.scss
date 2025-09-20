@@ -1,0 +1,11 @@
+@mixin small-mobile {
+  @media (max-width: 350px) {
+    @content;
+  }
+}
+
+.pokemonLogo {
+  @include small-mobile {
+    max-width: 280px;
+  }
+}

@@ -1,4 +1,8 @@
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
+import classNames from 'classnames/bind';
+import theme from './PokemonLogo.module.scss';
+
+const cx = classNames.bind(theme);
 
 export const PokemonLogo = () => {
   const { theme } = useTheme();
@@ -6,7 +10,7 @@ export const PokemonLogo = () => {
 
   return (
     <svg
-      className={`pokemon-logo`}
+      className={cx('pokemonLogo')}
       width="325"
       height="117"
       viewBox="0 0 326 117"
