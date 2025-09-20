@@ -1,6 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import classNames from 'classnames/bind';
-import theme from './button.module.scss';
+import theme from './Button.module.scss';
 
 const cx = classNames.bind(theme);
 

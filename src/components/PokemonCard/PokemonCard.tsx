@@ -3,7 +3,7 @@ import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import type { Pokemon } from '../../models/Pokemon';
 import { PokemonModal } from '../PokemonModal/PokemonModal';
 import classNames from 'classnames/bind';
-import theme from './pokemonCard.module.scss';
+import theme from './PokemonCard.module.scss';
 import { Button } from '../Button/Button';
 import { Icon } from '../../assets/icons/Icon';
 import { PokemonType } from '../PokemonType/PokemonType';

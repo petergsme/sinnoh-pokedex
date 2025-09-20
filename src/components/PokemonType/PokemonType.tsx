@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import theme from './pokemonType.module.scss';
+import theme from './PokemonType.module.scss';
 
 const cx = classNames.bind(theme);
 
