@@ -24,9 +24,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     }
 
     if (theme === 'darkmode') {
-      body.classList.add('body--color-darkmode');
+      body.classList.add('color-darkmode');
     } else {
-      body.classList.remove('body--color-darkmode');
+      body.classList.remove('color-darkmode');
     }
   }, [theme]);
 
