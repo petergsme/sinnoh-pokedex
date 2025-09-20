@@ -1,18 +1,13 @@
 @use './reset' as *;
 @use './variables' as *;
 @use './utilities' as *;
+@use './mixins.scss' as *;
 
 //ENTRY POINT CSS
-
-html {
-  background-color: #14052e;
-  background: var(--bg-primary-lightmode);
-}
 
 body {
   font-family: var(--font-family-body);
   min-height: 100vh;
-  background-color: #14052e;
   background: var(--bg-primary-lightmode);
   background-attachment: fixed;
   color: var(--text-onprimary-lightmode);
@@ -28,4 +23,8 @@ body {
   margin: 0 auto;
   gap: var(--gap-60);
   align-items: center;
+
+  @include mobile {
+    padding: var(--padding-40) var(--padding-20);
+  }
 }
