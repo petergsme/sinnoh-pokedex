@@ -1,0 +1,33 @@
+{
+  "name": "Sinnoh Pokédex",
+  "short_name": "Sinnohdex",
+  "description": "Explore all Pokémon from the Sinnoh region. Discover stats, descriptions, evolutions, and more in this complete Sinnoh Pokédex.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFA",
+  "theme_color": "#14052E",
+  "lang": "en",
+  "scope": "/",
+  "categories": ["education", "entertainment", "games", "reference"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
