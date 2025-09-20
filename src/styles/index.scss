@@ -30,6 +30,11 @@ body {
     height: 100dvh;
     background: var(--bg-primary-lightmode);
     z-index: -1;
+
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
   }
 }
 
