@@ -1,4 +1,4 @@
-import theme from './ThemeSwitcher.module.scss';
+import theme from './themeSwitcher.module.scss';
 import classNames from 'classnames/bind';
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import { Button } from '../Button/Button';

@@ -1,6 +1,6 @@
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
-import theme from './PokemonModal.module.scss';
+import theme from './pokemonModal.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(theme);
