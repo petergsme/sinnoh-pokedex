@@ -42,6 +42,7 @@ export const Pokedex = () => {
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(getLocalViewMode());
   const [showPokemon, setShowPokemon] = useState<'all' | 'favorites'>(getLocalSelectedPokemon());
+  const [favorites, setFavorites] = useState<number[]>(getFavorites);
 
   useEffect(() => {
     const loadPokemon = async () => {
@@ -54,7 +55,7 @@ export const Pokedex = () => {
         let ids: number[];
 
         if (showPokemon === 'favorites') {
-          ids = getFavorites();
+          ids = favorites;
         } else {
           ids = [];
           for (let i = 0; i < pokemonCount; i++) {
@@ -72,7 +73,7 @@ export const Pokedex = () => {
     };
 
     loadPokemon();
-  }, [showPokemon]);
+  }, [showPokemon, favorites]);
 
   useEffect(() => {
     try {
@@ -126,7 +127,7 @@ export const Pokedex = () => {
       ) : (
         <div className={cx(`pokedex__${viewMode}`)}>
           {pokemon.map((monster) => (
-            <PokemonCard key={monster.id} pokemon={monster} viewMode={viewMode} />
+            <PokemonCard key={monster.id} pokemon={monster} viewMode={viewMode} onFavoritesChange={setFavorites} />
           ))}
         </div>
       )}

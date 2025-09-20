@@ -14,9 +14,10 @@ const cx = classNames.bind(theme);
 interface PokemonCardProps {
   pokemon: Pokemon;
   viewMode: 'grid' | 'list';
+  onFavoritesChange: (favorites: number[]) => void;
 }
 
-export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
+export const PokemonCard = ({ pokemon, viewMode, onFavoritesChange }: PokemonCardProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { theme } = useTheme();
@@ -39,13 +40,15 @@ export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
     const favorites = getFavorites();
 
     if (isPokemonFavorite(pokemonId)) {
-      const newFavorite = favorites.filter((id) => id !== pokemonId);
-      localStorage.setItem('favorites', JSON.stringify(newFavorite));
+      const newFavorites = favorites.filter((id) => id !== pokemonId);
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
       setIsFavorite(false);
+      onFavoritesChange(newFavorites);
     } else {
-      const newFavorite = [...favorites, pokemonId];
-      localStorage.setItem('favorites', JSON.stringify(newFavorite));
+      const newFavorites = [...favorites, pokemonId];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
       setIsFavorite(true);
+      onFavoritesChange(newFavorites);
     }
   };
 
