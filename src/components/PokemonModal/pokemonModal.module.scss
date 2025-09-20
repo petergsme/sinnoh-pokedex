@@ -55,6 +55,7 @@
 
   &--color-darkmode {
     background: var(--bg-primary-darkmode);
+    box-shadow: 0px 0px 2px 0px var(--drop-shadow-white);
   }
 }
 

@@ -7,16 +7,16 @@
   --white-100-hsl: 60, 100%, 99%;
 
   //Core colors - purple
-  --purple-200: hsla(280, 66%, 90%, 1);
-  --purple-300-main: hsla(260, 78%, 60%, 1);
-  --purple-400: hsla(290, 58%, 62%, 1);
-  --purple-800: hsla(270, 83%, 20%, 1);
-  --purple-800-hsl: 270, 83%, 20%;
-  --purple-900: hsla(270, 75%, 11%, 1);
-  --purple-900-hsl: 270, 75%, 11%;
+  --purple-200: hsla(277, 61%, 78%, 1);
+  --purple-300-main: hsla(262, 79%, 60%, 1);
+  --purple-400: hsla(291, 51%, 62%, 1);
+  --purple-800: hsla(262, 79%, 20%, 1);
+  --purple-800-hsl: 262, 79%, 20%;
+  --purple-900: hsla(262, 80%, 10%, 1);
+  --purple-900-hsl: 262, 80%, 10%;
 
   //Core colors - yellow
-  --yellow-200: hsla(50, 85%, 80%, 1);
+  --yellow-200: hsla(50, 82%, 80%, 1);
   --yellow-700: hsla(50, 82%, 21%, 1);
 
   //Pokemon type colors
@@ -39,7 +39,7 @@
   --water-type: hsla(218, 87%, 75%, 1);
 
   //OPACITY VALUES
-  --opacity-8: 0.08;
+  --opacity-12: 0.12;
   --opacity-20: 0.2;
   --opacity-30: 0.3;
   --opacity-50: 0.5;
@@ -130,8 +130,8 @@
   --icon-primary-darkmode: var(--white-100-main);
 
   //BACKGROUNDS
-  --bg-primary-lightmode: linear-gradient(165deg, var(--yellow-200) 0%, var(--purple-200) 100%);
-  --bg-primary-darkmode: linear-gradient(165deg, var(--yellow-700) 0%, var(--purple-800) 100%);
+  --bg-primary-lightmode: linear-gradient(180deg, var(--yellow-200) 0%, var(--purple-200) 100%);
+  --bg-primary-darkmode: linear-gradient(180deg, var(--yellow-700) 0%, var(--purple-800) 100%);
   --bg-secondary-lightmode: hsla(var(--white-100-hsl), var(--opacity-30));
   --bg-secondary-darkmode: hsla(var(--white-100-hsl), var(--opacity-20));
   --bg-overlay-lightmode: hsla(var(--purple-900-hsl), var(--opacity-75));
@@ -139,6 +139,6 @@
   --bg-activeElement: linear-gradient(165deg, var(--purple-300-main) 0%, var(--purple-400) 100%);
 
   //DROP SHADOWS
-  --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-8));
-  --drop-shadow-white: hsla(var(--white-100-hsl), var(--opacity-8));
+  --drop-shadow-black: hsla(var(--purple-800-hsl), var(--opacity-12));
+  --drop-shadow-white: hsla(var(--white-100-hsl), var(--opacity-30));
 }
