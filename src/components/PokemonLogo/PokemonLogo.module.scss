@@ -6,6 +6,6 @@
 
 .pokemonLogo {
   @include small-mobile {
-    max-width: 280px;
+    max-width: 100%;
   }
 }
