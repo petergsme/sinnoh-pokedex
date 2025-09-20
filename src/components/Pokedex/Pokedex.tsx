@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import type { Pokemon } from '../../models/Pokemon';
 import { fetchMultiplePokemon } from '../../services/pokeApi';
+import { getFavorites } from '../../utils/favoritesUtils';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
 import { Button } from '../Button/Button';
 import classNames from 'classnames/bind';
@@ -11,15 +12,6 @@ import { Icon } from '../../assets/icons/Icon';
 const cx = classNames.bind(theme);
 
 export const Pokedex = () => {
-  const getFavorites = (): number[] => {
-    const saved = localStorage.getItem('favorites');
-    if (saved) {
-      return JSON.parse(saved);
-    } else {
-      return [];
-    }
-  };
-
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   const [isloading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

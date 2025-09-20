@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import type { Pokemon } from '../../models/Pokemon';
+import { getFavorites, isPokemonFavorite } from '../../utils/favoritesUtils';
 import { PokemonModal } from '../PokemonModal/PokemonModal';
-import classNames from 'classnames/bind';
-import theme from './PokemonCard.module.scss';
 import { Button } from '../Button/Button';
 import { Icon } from '../../assets/icons/Icon';
 import { PokemonType } from '../PokemonType/PokemonType';
 import { PokemonStatBar } from '../PokemonStatBar/PokemonStatBar';
+import classNames from 'classnames/bind';
+import theme from './PokemonCard.module.scss';
 
 const cx = classNames.bind(theme);
 
@@ -21,20 +22,6 @@ export const PokemonCard = ({ pokemon, viewMode, onFavoritesChange }: PokemonCar
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { theme } = useTheme();
-
-  const getFavorites = (): number[] => {
-    const saved = localStorage.getItem('favorites');
-    if (saved) {
-      return JSON.parse(saved);
-    } else {
-      return [];
-    }
-  };
-
-  const isPokemonFavorite = (pokemonId: number) => {
-    const favorites = getFavorites();
-    return favorites.includes(pokemonId);
-  };
 
   const togglePokemonFavorite = (pokemonId: number) => {
     const favorites = getFavorites();
