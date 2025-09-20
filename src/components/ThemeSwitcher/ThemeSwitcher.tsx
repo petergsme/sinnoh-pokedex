@@ -11,11 +11,11 @@ export const ThemeSwitcher = () => {
 
   return (
     <div className={cx('align-end', 'themeswitcher__Button--margin')}>
-      <Button onClick={() => setLightMode()} toggle={theme === 'lightmode'}>
+      <Button onClick={() => setLightMode()} toggle={theme === 'lightmode'} name="Lightmode">
         <Icon icon="Sun" size="small" />
       </Button>
 
-      <Button onClick={() => setDarkMode()} toggle={theme === 'darkmode'}>
+      <Button onClick={() => setDarkMode()} toggle={theme === 'darkmode'} name="Darkmode">
         <Icon icon="Moon" size="small" />
       </Button>
     </div>

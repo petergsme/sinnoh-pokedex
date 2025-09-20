@@ -8,9 +8,10 @@ interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
   toggle?: boolean;
+  name?: string;
 }
 
-export const Button = ({ onClick, children, toggle = false }: ButtonProps) => {
+export const Button = ({ onClick, children, toggle = false, name }: ButtonProps) => {
   const { theme } = useTheme();
 
   const buttonClass = cx('btn', 'paragraph-s-medium', {
@@ -20,7 +21,7 @@ export const Button = ({ onClick, children, toggle = false }: ButtonProps) => {
 
   return (
     <>
-      <button type="button" onClick={onClick} className={buttonClass}>
+      <button type="button" onClick={onClick} className={buttonClass} title={name}>
         {children}
       </button>
     </>

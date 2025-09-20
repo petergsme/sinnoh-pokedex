@@ -29,7 +29,6 @@ export const Icon = ({ icon, size = 'small', extraClass }: IconProps) => {
         extraClass
       )}
       role="img"
-      title={`${icon}-icon`}
     >
       {createElement(icons[icon], {})}
     </span>

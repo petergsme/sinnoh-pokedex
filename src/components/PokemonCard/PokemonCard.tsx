@@ -21,6 +21,36 @@ export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const { theme } = useTheme();
 
+  const getFavorites = (): number[] => {
+    const saved = localStorage.getItem('favorites');
+    if (saved) {
+      return JSON.parse(saved);
+    } else {
+      return [];
+    }
+  };
+
+  const isPokemonFavorite = (pokemonId: number) => {
+    const favorites = getFavorites();
+    return favorites.includes(pokemonId);
+  };
+
+  const togglePokemonFavorite = (pokemonId: number) => {
+    const favorites = getFavorites();
+
+    if (isPokemonFavorite(pokemonId)) {
+      const newFavorite = favorites.filter((id) => id !== pokemonId);
+      localStorage.setItem('favorites', JSON.stringify(newFavorite));
+      setIsFavorite(false);
+    } else {
+      const newFavorite = [...favorites, pokemonId];
+      localStorage.setItem('favorites', JSON.stringify(newFavorite));
+      setIsFavorite(true);
+    }
+  };
+
+  const [isFavorite, setIsFavorite] = useState(() => isPokemonFavorite(pokemon.id));
+
   const handleCloseModal = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -59,11 +89,11 @@ export const PokemonCard = ({ pokemon, viewMode }: PokemonCardProps) => {
         <PokemonModal onClose={handleCloseModal} isClosing={isClosing}>
           <section className={cx('pokeCardDetail__topSection')}>
             <div className={cx('pokeCardDetail__buttons')}>
-              <Button onClick={() => console.log('amen')}>
+              <Button onClick={() => togglePokemonFavorite(pokemon.id)} toggle={isFavorite} name="Add to favorites">
                 <Icon icon="Heart" />
               </Button>
 
-              <Button onClick={() => handleCloseModal()}>
+              <Button onClick={() => handleCloseModal()} name="Close">
                 <Icon icon="Cross" />
               </Button>
             </div>

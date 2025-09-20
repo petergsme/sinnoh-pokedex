@@ -62,17 +62,19 @@ export const Pokedex = () => {
       <section className={cx('pokedex__controls')}>
         <div>
           <p className={cx('paragraph-s-medium')}>View:</p>
-          <Button onClick={() => setViewMode('grid')} toggle={viewMode === 'grid'}>
+          <Button onClick={() => setViewMode('grid')} toggle={viewMode === 'grid'} name="View as grid">
             Grid
           </Button>
-          <Button onClick={() => setViewMode('list')} toggle={viewMode === 'list'}>
+          <Button onClick={() => setViewMode('list')} toggle={viewMode === 'list'} name="View as list">
             List
           </Button>
         </div>
 
         <div>
-          <Button onClick={() => console.log('hola')}>All</Button>
-          <Button onClick={() => console.log('hola')}>
+          <Button onClick={() => console.log('hola')} name="Show all Pokémon">
+            All
+          </Button>
+          <Button onClick={() => console.log('hola')} name="Show favorite Pokémon">
             <Icon icon="Heart" />
           </Button>
         </div>
