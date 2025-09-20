@@ -46,7 +46,7 @@
 
   &__basicInfo {
     @include pokeCardDetail-flex-column();
-    gap: var(--gap-12);
+    gap: var(--gap-8);
 
     &-measurements {
       @include pokeCardDetail-flex-gap-20();
