@@ -25,7 +25,7 @@ export const PokemonCard = (props: PokemonCardProps) => {
     setTimeout(() => {
       setIsOpenModal(false);
       setIsClosing(false);
-    }, 300);
+    }, 200);
   };
 
   const { pokemon } = props;
