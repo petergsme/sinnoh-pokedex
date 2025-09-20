@@ -16,6 +16,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     const body = document.body;
+    const html = document.documentElement;
 
     try {
       localStorage.setItem('localtheme', theme);
@@ -25,8 +26,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     if (theme === 'darkmode') {
       body.classList.add('body--color-darkmode');
+      html.classList.add('html--color-darkmode');
     } else {
       body.classList.remove('body--color-darkmode');
+      html.classList.remove('html--color-darkmode');
     }
   }, [theme]);
 

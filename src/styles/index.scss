@@ -3,9 +3,16 @@
 @use './utilities' as *;
 
 //ENTRY POINT CSS
+
+html {
+  overscroll-behavior: none;
+  background: var(--bg-primary-lightmode);
+}
+
 body {
   font-family: var(--font-family-body);
   min-height: 100vh;
+
   background: var(--bg-primary-lightmode);
   background-attachment: fixed;
   color: var(--text-onprimary-lightmode);
@@ -16,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   max-width: var(--size-900);
+  min-height: 100dvh;
   padding: var(--padding-80) var(--padding-20);
   margin: 0 auto;
   gap: var(--gap-60);
