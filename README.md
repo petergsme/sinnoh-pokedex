@@ -1,4 +1,4 @@
-# Memoria del Proyecto Pokédex Sinnoh
+# Memoria del Proyecto Pokedex Sinnoh
 
 ## Índice
 
