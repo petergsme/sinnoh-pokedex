@@ -19,19 +19,26 @@ export const Pokedex = () => {
   const [showPokemon, setShowPokemon] = useLocalStorage('selectedPokemon', 'all', ['all', 'favorites']);
   const [favorites, setFavorites] = useState<number[]>(getFavorites);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPokemon = showPokemon === 'favorites' ? favorites.length : sinnohPokemonIds.length;
+  const pokemonPerPage = 30;
+  const totalPages = Math.ceil(totalPokemon / pokemonPerPage);
+
   useEffect(() => {
     const loadPokemon = async () => {
       setError(null);
 
       try {
-        const pokemonCount = 30;
-
         let ids: number[];
 
         if (showPokemon === 'favorites') {
-          ids = favorites;
+          const startIndex = (currentPage - 1) * pokemonPerPage;
+          const endIndex = startIndex + pokemonPerPage;
+          ids = favorites.slice(startIndex, endIndex);
         } else {
-          ids = sinnohPokemonIds.slice(0, pokemonCount);
+          const startIndex = (currentPage - 1) * pokemonPerPage;
+          const endIndex = startIndex + pokemonPerPage;
+          ids = sinnohPokemonIds.slice(startIndex, endIndex);
         }
 
         const pokemonData = await fetchMultiplePokemon(ids);
@@ -44,7 +51,7 @@ export const Pokedex = () => {
     };
 
     loadPokemon();
-  }, [showPokemon, favorites]);
+  }, [showPokemon, favorites, currentPage]);
 
   return (
     <div className={cx('pokedex')}>
@@ -64,7 +71,10 @@ export const Pokedex = () => {
             All
           </Button>
           <Button
-            onClick={() => setShowPokemon('favorites')}
+            onClick={() => {
+              setShowPokemon('favorites');
+              setCurrentPage(1);
+            }}
             toggle={showPokemon === 'favorites'}
             name="Show favorite Pokémon"
           >
@@ -90,6 +100,43 @@ export const Pokedex = () => {
             />
           ))}
         </div>
+      )}
+
+      {totalPages > 1 && (
+        <section className={cx('pokedex__pagination')}>
+          {/* If we are on page 3 or higher, a button to go to the first page appears */}
+          {currentPage >= 3 && (
+            <Button onClick={() => setCurrentPage(1)} name={`Page ${currentPage - 1}`}>
+              First
+            </Button>
+          )}
+
+          {/* If not on the first page, create a button that will dynamically take you to the previous page */}
+          {currentPage !== 1 && (
+            <Button onClick={() => setCurrentPage(currentPage - 1)} name={`Page ${currentPage - 1}`}>
+              {currentPage - 1}
+            </Button>
+          )}
+
+          {/* Current page button */}
+          <Button onClick={() => {}} name={`Page ${currentPage}`} toggle={currentPage === currentPage}>
+            {currentPage}
+          </Button>
+
+          {/* If not on the lastPage, create a button to go to the next page. */}
+          {currentPage !== totalPages && (
+            <Button onClick={() => setCurrentPage(currentPage + 1)} name={`Page ${currentPage + 1}`}>
+              {currentPage + 1}
+            </Button>
+          )}
+
+          {/* If on a page before the page previous to the last one, create a button to go to the last page. */}
+          {currentPage < totalPages - 1 && (
+            <Button onClick={() => setCurrentPage(totalPages)} name={`Page ${currentPage - 1}`}>
+              Last
+            </Button>
+          )}
+        </section>
       )}
     </div>
   );
