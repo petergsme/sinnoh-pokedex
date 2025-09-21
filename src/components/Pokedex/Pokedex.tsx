@@ -64,6 +64,10 @@ export const Pokedex = () => {
     loadPokemon();
   }, [showPokemon, favorites, currentPage]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   return (
     <div className={cx('pokedex')}>
       <section className={cx('pokedex__controls')}>
