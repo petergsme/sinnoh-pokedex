@@ -1,4 +1,4 @@
-# Memoria del Proyecto Pokédex Sinnoh
+# Memoria del Proyecto Pokedex Sinnoh
 
 ## Índice
 
@@ -10,15 +10,12 @@
   - [Estilos](#estilos)
   - [Iconos](#iconos)
 - [Primeros componentes](#primeros-componentes)
-- [PokéAPI](#pokéapi)
+- [PokeAPI](#pokéapi)
 - [PokemonCards y PokemonModal](#pokemoncards-y-pokemonmodal)
-- [La famosa Pokédex](#la-famosa-pokédx)
+- [La famosa Pokedex](#la-famosa-pokédx)
 - [Funcionalidades avanzadas](#funcionalidades-avanzadas)
   - [Favoritos](#favoritos)
   - [Paginación](#paginación)
-  - [Custom hooks](#custom-hooks)
-- [Utilidades](#utilidades)
-- [Mayores desafíos](#mayores-desafíos)
 - [Inteligencia artificial](#inteligencia-artificial)
 - [Mi aprendizaje](#mi-aprendizaje)
 
@@ -99,7 +96,7 @@ Empecé por lo más básico. `Button` (`src/components/Button/Button.tsx`) es el
 
 Para el `ThemeSwitcher` (`src/components/ThemeSwitcher/ThemeSwitcher.tsx`), los botones que cambian el modo de color de la página, creé un contexto global para manejar el tema. No había trabajado mucho con contextos pero fue sencillo siguiendo la documentación de React y TypeScript. El contexto guarda la preferencia en localStorage usando la clave `theme`, detecta la preferencia del sistema por defecto si no hay nada guardado, y aplica las clases CSS correspondientes al fondo del `body` de la app. Este componente simplemente renderiza dos botones que llaman a las funciones `setLightMode` y `setDarkMode` del custom hook del contexto. Casi todos componentes se suscriben al `ThemeContext` para cambiar sus clases al cambiar el modo de color.
 
-## PokéAPI
+## PokeAPI
 
 ```
 src/
