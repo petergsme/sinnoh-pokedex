@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import type { Pokemon } from '../../models/Pokemon';
 import { fetchMultiplePokemon, sinnohPokemonIds } from '../../services/pokeApi';
@@ -15,14 +16,24 @@ export const Pokedex = () => {
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   const [isloading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
   const [viewMode, setViewMode] = useLocalStorage('viewMode', 'grid', ['grid', 'list']);
+
   const [showPokemon, setShowPokemon] = useLocalStorage('selectedPokemon', 'all', ['all', 'favorites']);
   const [favorites, setFavorites] = useState<number[]>(getFavorites);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const totalPokemon = showPokemon === 'favorites' ? favorites.length : sinnohPokemonIds.length;
   const pokemonPerPage = 30;
   const totalPages = Math.ceil(totalPokemon / pokemonPerPage);
+  const currentPage = (() => {
+    const page = Number(searchParams.get('page')) || 1;
+    return page > totalPages ? 1 : page;
+  })();
+  const goToPage = (page: number) => {
+    setSearchParams({ page: page.toString() });
+  };
 
   useEffect(() => {
     const loadPokemon = async () => {
@@ -73,7 +84,7 @@ export const Pokedex = () => {
           <Button
             onClick={() => {
               setShowPokemon('favorites');
-              setCurrentPage(1);
+              goToPage(1);
             }}
             toggle={showPokemon === 'favorites'}
             name="Show favorite Pokémon"
@@ -106,14 +117,14 @@ export const Pokedex = () => {
         <section className={cx('pokedex__pagination')}>
           {/* If we are on page 3 or higher, a button to go to the first page appears */}
           {currentPage >= 3 && (
-            <Button onClick={() => setCurrentPage(1)} name={`Page ${currentPage - 1}`}>
+            <Button onClick={() => goToPage(1)} name={`Page ${currentPage - 1}`}>
               First
             </Button>
           )}
 
           {/* If not on the first page, create a button that will dynamically take you to the previous page */}
           {currentPage !== 1 && (
-            <Button onClick={() => setCurrentPage(currentPage - 1)} name={`Page ${currentPage - 1}`}>
+            <Button onClick={() => goToPage(currentPage - 1)} name={`Page ${currentPage - 1}`}>
               {currentPage - 1}
             </Button>
           )}
@@ -125,14 +136,14 @@ export const Pokedex = () => {
 
           {/* If not on the lastPage, create a button to go to the next page. */}
           {currentPage !== totalPages && (
-            <Button onClick={() => setCurrentPage(currentPage + 1)} name={`Page ${currentPage + 1}`}>
+            <Button onClick={() => goToPage(currentPage + 1)} name={`Page ${currentPage + 1}`}>
               {currentPage + 1}
             </Button>
           )}
 
           {/* If on a page before the page previous to the last one, create a button to go to the last page. */}
           {currentPage < totalPages - 1 && (
-            <Button onClick={() => setCurrentPage(totalPages)} name={`Page ${currentPage - 1}`}>
+            <Button onClick={() => goToPage(totalPages)} name={`Page ${currentPage - 1}`}>
               Last
             </Button>
           )}
