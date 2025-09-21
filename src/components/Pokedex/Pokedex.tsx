@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { usePagination } from '../../hooks/usePagination';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import type { Pokemon } from '../../models/Pokemon';
 import { fetchMultiplePokemon, sinnohPokemonIds } from '../../services/pokeApi';
@@ -24,18 +24,9 @@ export const Pokedex = () => {
   const [showPokemon, setShowPokemon] = useLocalStorage('selectedPokemon', 'all', ['all', 'favorites']);
   const [favorites, setFavorites] = useState<number[]>(getFavorites);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const totalPokemon = showPokemon === 'favorites' ? favorites.length : sinnohPokemonIds.length;
   const pokemonPerPage = 30;
-  const totalPages = Math.ceil(totalPokemon / pokemonPerPage);
-  const currentPage = (() => {
-    const page = Number(searchParams.get('page')) || 1;
-    return page > totalPages ? 1 : page;
-  })();
-  const goToPage = (page: number) => {
-    setSearchParams({ page: page.toString() });
-  };
+  const { currentPage, totalPages, goToPage } = usePagination(totalPokemon, pokemonPerPage);
 
   useEffect(() => {
     const loadPokemon = async () => {
