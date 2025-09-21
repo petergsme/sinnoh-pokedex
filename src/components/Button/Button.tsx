@@ -9,9 +9,10 @@ interface ButtonProps {
   children: React.ReactNode;
   toggle?: boolean;
   name?: string;
+  isDisabled?: boolean;
 }
 
-export const Button = ({ onClick, children, toggle = false, name }: ButtonProps) => {
+export const Button = ({ onClick, children, toggle = false, name, isDisabled = false }: ButtonProps) => {
   const { theme } = useTheme();
 
   const buttonClass = cx('btn', 'paragraph-s-medium', {
@@ -21,7 +22,7 @@ export const Button = ({ onClick, children, toggle = false, name }: ButtonProps)
 
   return (
     <>
-      <button type="button" onClick={onClick} className={buttonClass} title={name}>
+      <button type="button" onClick={onClick} className={buttonClass} title={name} disabled={isDisabled}>
         {children}
       </button>
     </>
