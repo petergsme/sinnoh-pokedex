@@ -7,6 +7,12 @@
   }
 }
 
+@mixin mobile-up {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
 .btn {
   width: fit-content;
   min-height: 48px;
@@ -36,8 +42,10 @@
     @include active-element-state;
   }
 
-  &:hover {
-    @include active-element-state;
-    transform: translateY(-1px);
+  @include mobile-up {
+    &:hover {
+      @include active-element-state;
+      transform: translateY(-1px);
+    }
   }
 }
