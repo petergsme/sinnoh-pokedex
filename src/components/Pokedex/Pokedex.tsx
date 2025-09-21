@@ -6,11 +6,10 @@ import { fetchMultiplePokemon, sinnohPokemonIds } from '../../services/pokeApi';
 import { getFavorites } from '../../utils/favoritesUtils';
 import { getPaginatedIds } from '../../utils/paginationUtils';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
-import { Button } from '../Button/Button';
+import { Pagination } from '../Pagination/Pagination';
+import { PokedexControls } from '../PokedexControls/PokedexControls';
 import classNames from 'classnames/bind';
 import theme from './Pokedex.module.scss';
-import { Icon } from '../../assets/icons/Icon';
-import { Pagination } from '../Pagination/Pagination';
 
 const cx = classNames.bind(theme);
 
@@ -59,33 +58,13 @@ export const Pokedex = () => {
 
   return (
     <div className={cx('pokedex')}>
-      <section className={cx('pokedex__controls')}>
-        <div>
-          <p className={cx('paragraph-s-medium')}>View:</p>
-          <Button onClick={() => setViewMode('grid')} toggle={viewMode === 'grid'} name="View as grid">
-            Grid
-          </Button>
-          <Button onClick={() => setViewMode('list')} toggle={viewMode === 'list'} name="View as list">
-            List
-          </Button>
-        </div>
-
-        <div>
-          <Button onClick={() => setShowPokemon('all')} toggle={showPokemon === 'all'} name="Show all Pokémon">
-            All
-          </Button>
-          <Button
-            onClick={() => {
-              setShowPokemon('favorites');
-              goToPage(1);
-            }}
-            toggle={showPokemon === 'favorites'}
-            name="Show favorite Pokémon"
-          >
-            <Icon icon="Heart" />
-          </Button>
-        </div>
-      </section>
+      <PokedexControls
+        onPageChange={goToPage}
+        setShow={setShowPokemon}
+        show={showPokemon}
+        setView={setViewMode}
+        view={viewMode}
+      />
 
       {isloading ? (
         <p className={cx('paragraph-m')}>Loading Pokémon...</p>
