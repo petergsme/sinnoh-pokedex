@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import type { Pokemon } from '../../models/Pokemon';
-import { fetchMultiplePokemon } from '../../services/pokeApi';
+import { fetchMultiplePokemon, sinnohPokemonIds } from '../../services/pokeApi';
 import { getFavorites } from '../../utils/favoritesUtils';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
 import { Button } from '../Button/Button';
@@ -24,18 +24,14 @@ export const Pokedex = () => {
       setError(null);
 
       try {
-        const startId = 387;
-        const pokemonCount = 15;
+        const pokemonCount = 30;
 
         let ids: number[];
 
         if (showPokemon === 'favorites') {
           ids = favorites;
         } else {
-          ids = [];
-          for (let i = 0; i < pokemonCount; i++) {
-            ids.push(startId + i);
-          }
+          ids = sinnohPokemonIds.slice(0, pokemonCount);
         }
 
         const pokemonData = await fetchMultiplePokemon(ids);
