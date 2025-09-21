@@ -7,7 +7,7 @@ export const getFavorites = (): number[] => {
   }
 };
 
-export const isPokemonFavorite = (pokemonId: number): boolean => {
+export const isPokemonFavorite = (pokemonId: number) => {
   const favorites = getFavorites();
   return favorites.includes(pokemonId);
 };

@@ -4,6 +4,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import type { Pokemon } from '../../models/Pokemon';
 import { fetchMultiplePokemon, sinnohPokemonIds } from '../../services/pokeApi';
 import { getFavorites } from '../../utils/favoritesUtils';
+import { getPaginatedIds } from '../../utils/paginationUtils';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
 import { Button } from '../Button/Button';
 import classNames from 'classnames/bind';
@@ -43,13 +44,9 @@ export const Pokedex = () => {
         let ids: number[];
 
         if (showPokemon === 'favorites') {
-          const startIndex = (currentPage - 1) * pokemonPerPage;
-          const endIndex = startIndex + pokemonPerPage;
-          ids = favorites.slice(startIndex, endIndex);
+          ids = getPaginatedIds(favorites, currentPage, pokemonPerPage);
         } else {
-          const startIndex = (currentPage - 1) * pokemonPerPage;
-          const endIndex = startIndex + pokemonPerPage;
-          ids = sinnohPokemonIds.slice(startIndex, endIndex);
+          ids = getPaginatedIds(sinnohPokemonIds, currentPage, pokemonPerPage);
         }
 
         const pokemonData = await fetchMultiplePokemon(ids);
