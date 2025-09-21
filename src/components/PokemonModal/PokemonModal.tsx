@@ -1,4 +1,4 @@
-import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
+import { useEffect } from 'react';
 import { useTheme } from '../../contexts/ThemeContext/useTheme';
 import theme from './pokemonModal.module.scss';
 import classNames from 'classnames/bind';
@@ -12,7 +12,6 @@ interface PokemonModalProps {
 }
 
 export const PokemonModal = ({ children, isClosing, onClose }: PokemonModalProps) => {
-  useBodyScrollLock();
   const { theme } = useTheme();
 
   const handleModalClick = (event: React.MouseEvent) => {
@@ -20,6 +19,14 @@ export const PokemonModal = ({ children, isClosing, onClose }: PokemonModalProps
       onClose();
     }
   };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <div
