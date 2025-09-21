@@ -10,6 +10,7 @@ import { Button } from '../Button/Button';
 import classNames from 'classnames/bind';
 import theme from './Pokedex.module.scss';
 import { Icon } from '../../assets/icons/Icon';
+import { Pagination } from '../Pagination/Pagination';
 
 const cx = classNames.bind(theme);
 
@@ -114,42 +115,7 @@ export const Pokedex = () => {
         </div>
       )}
 
-      {totalPages > 1 && (
-        <section className={cx('pokedex__pagination')}>
-          {/* If we are on page 3 or higher, a button to go to the first page appears */}
-          {currentPage >= 3 && (
-            <Button onClick={() => goToPage(1)} name={`Page ${currentPage - 1}`}>
-              First
-            </Button>
-          )}
-
-          {/* If not on the first page, create a button that will dynamically take you to the previous page */}
-          {currentPage !== 1 && (
-            <Button onClick={() => goToPage(currentPage - 1)} name={`Page ${currentPage - 1}`}>
-              {currentPage - 1}
-            </Button>
-          )}
-
-          {/* Current page button */}
-          <Button onClick={() => {}} name={`Page ${currentPage}`} toggle={currentPage === currentPage}>
-            {currentPage}
-          </Button>
-
-          {/* If not on the lastPage, create a button to go to the next page. */}
-          {currentPage !== totalPages && (
-            <Button onClick={() => goToPage(currentPage + 1)} name={`Page ${currentPage + 1}`}>
-              {currentPage + 1}
-            </Button>
-          )}
-
-          {/* If on a page before the page previous to the last one, create a button to go to the last page. */}
-          {currentPage < totalPages - 1 && (
-            <Button onClick={() => goToPage(totalPages)} name={`Page ${currentPage - 1}`}>
-              Last
-            </Button>
-          )}
-        </section>
-      )}
+      {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />}
     </div>
   );
 };
