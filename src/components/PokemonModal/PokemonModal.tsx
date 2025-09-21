@@ -12,7 +12,7 @@ interface PokemonModalProps {
 }
 
 export const PokemonModal = ({ children, isClosing, onClose }: PokemonModalProps) => {
-  useBodyScrollLock({ enabled: true });
+  useBodyScrollLock();
   const { theme } = useTheme();
 
   const handleModalClick = (event: React.MouseEvent) => {
