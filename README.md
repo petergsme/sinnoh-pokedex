@@ -10,9 +10,9 @@
   - [Estilos](#estilos)
   - [Iconos](#iconos)
 - [Primeros componentes](#primeros-componentes)
-- [PokeAPI](#pokéapi)
+- [PokeAPI](#Pokeapi)
 - [PokemonCards y PokemonModal](#pokemoncards-y-pokemonmodal)
-- [La famosa Pokedex](#la-famosa-pokédx)
+- [La famosa Pokedex](#la-famosa-Pokedx)
 - [Funcionalidades avanzadas](#funcionalidades-avanzadas)
   - [Favoritos](#favoritos)
   - [Paginación](#paginación)
@@ -23,17 +23,17 @@
 
 ## La premisa
 
-La prueba técnica consistía en desarrollar una app web para mostrar todos los Pokémon de Sinnoh, con vista listado, vista detalle, paginación, modo oscuro/claro, y la opción de cambiar entre vista cuadrícula y lista. También había opción de entregar algunos extras como un diseño responsive, TypeScript, un sistema de favoritos, custom properties con CSS y testing.
+La prueba técnica consistía en desarrollar una app web para mostrar todos los Pokemon de Sinnoh, con vista listado, vista detalle, paginación, modo oscuro/claro, y la opción de cambiar entre vista cuadrícula y lista. También había opción de entregar algunos extras como un diseño responsive, TypeScript, un sistema de favoritos, custom properties con CSS y testing.
 
 ## Filosofía y proceso
 
 Soy un junior y me queda mucho por aprender, pero intento adherirme al método que conozco y me funciona. Siempre pienso antes de programar e intento anotar cómo debería funcionar la lógica que quiero implementar, y luego voy programando de menos a más. Implemento las versiones más básicas de la lógica que quiero crear, voy poco a poco comprobando que funciona y apilando un ladrillito sobre otro, hasta que eventualmente tengo una torre. Y luego pinto la torre, que para mí significa simplificar mis componentes para que el código sea mucho más accesible.
 
-Para la Pokédex, por ejemplo, fui montando todo poco a poco en el componente principal y luego extraje los componentes `Pagination` y `PokedexControls`, y el custom hook `useLocalStorage`.
+Para la Pokedex, por ejemplo, fui montando todo poco a poco en el componente principal y luego extraje los componentes `Pagination` y `PokedexControls`, y el custom hook `useLocalStorage`.
 
 ## Diseño y prototipado
 
-Mi objetivo era crear **una Pokédex para casuals**, algo moderno, sencillo, funcional y ligero. Me gustan los Pokémon pero hace tiempo que no estoy en el mundillo, así que quería que fuera accesible para gente como yo que no necesariamente es experta pero quiere explorar de manera intuitiva.
+Mi objetivo era crear **una Pokedex para casuals**, algo moderno, sencillo, funcional y ligero. Me gustan los Pokemon pero hace tiempo que no estoy en el mundillo, así que quería que fuera accesible para gente como yo que no necesariamente es experta pero quiere explorar de manera intuitiva.
 
 Dediqué el primer día a diseñar y prototipar en Figma. Para mí es importante establecer unas bases sólidas en el diseño antes de escribir una sola línea de código. Creé un sistema de diseño completo con variables tokenizadas para espaciados, colores y tipografías, y componentes y prototipos interactivos. Las variables fueron especialmente importantes para definir rápidamente una base de estilos súper sólida en custom properties de SCSS y clases de utilidad de textos.
 
@@ -108,18 +108,18 @@ src/
     └── PokemonSpeciesResponse.ts
 ```
 
-La API de Pokémon fue un desafío. No había trabajado casi nada con APIs, así que tuve que volver a aprender a tipar los datos que recibimos y los datos que queremos usar, transformarlos y crear funciones fetch para hacer llamadas. Para empezar estuve viendo tutoriales de gente que había hecho una pokedex (como [este](https://www.youtube.com/watch?v=XNEhQiIAzOo) o [este](https://www.youtube.com/watch?v=RMrA3xkbMMs)), para tener una idea de cómo trabajar con la API, y luego consulté mucho la documentación de PokeAPI.
+La API de Pokemon fue un desafío. No había trabajado casi nada con APIs, así que tuve que volver a aprender a tipar los datos que recibimos y los datos que queremos usar, transformarlos y crear funciones fetch para hacer llamadas. Para empezar estuve viendo tutoriales de gente que había hecho una pokedex (como [este](https://www.youtube.com/watch?v=XNEhQiIAzOo) o [este](https://www.youtube.com/watch?v=RMrA3xkbMMs)), para tener una idea de cómo trabajar con la API, y luego consulté mucho la documentación de PokeAPI.
 
 Para los tipados creé interfaces para las respuestas de los endpoints como `PokeApiResponse` y `PokeSpeciesResponse`, y para mi objeto `Pokemon`.
 
-Con la documentación de PokéAPI me di cuenta de que la manera más directa para sacar los Pokémon de Sinnoh era usar el endpoint normal (`/pokemon`) con IDs específicos. Así que monté un array `sinnohPokemonIds` con todos los IDs de los Pokémon de la región Sinnoh extendida, ordenados según aparecen en la pokedex.
+Con la documentación de PokeAPI me di cuenta de que la manera más directa para sacar los Pokemon de Sinnoh era usar el endpoint normal (`/pokemon`) con IDs específicos. Así que monté un array `sinnohPokemonIds` con todos los IDs de los Pokemon de la región Sinnoh extendida, ordenados según aparecen en la pokedex.
 
 `pokeApi.ts` incluye cuatro funciones principales:
 
 - `getDescription()` obtiene descripciones desde el endpoint `pokemon-species` y fue interesante porque las descripciones vienen con caracteres extraños, saltos de línea y espacios duplicados que tuve que limpiar con regex. Por suerte estaba avisado en la documentación y mostraba cómo solucionarlo [aquí](https://github.com/veekun/pokedex/issues/218#issuecomment-339841781).
 - `transformPokemon()` transforma la respuesta del API a mi interface `Pokemon`
 - `fetchPokemon()` hace el fetch combinando datos del endpoint principal con la descripción del species y utiliza `transformPokemon()`.
-- `fetchMultiplePokemon()` utiliza `Promise.all` para obtener múltiples Pokémon en paralelo.
+- `fetchMultiplePokemon()` utiliza `Promise.all` para obtener múltiples Pokemon en paralelo.
 
 ## PokemonCards y PokemonModal
 
@@ -131,11 +131,11 @@ src/components/
 └── PokemonStatBar/
 ```
 
-`PokemonCard` (`src/components/PokemonCard/PokemonCard.tsx`) es el auténtico corazón de la app. Se trata de la tarjeta del Pokemon y su vista detalle. Renderiza diferentes versiones según el `viewMode` prop (grid o lista) y al hacer click abre el modal con toda la información detallada del mismo Pokémon.
+`PokemonCard` (`src/components/PokemonCard/PokemonCard.tsx`) es el auténtico corazón de la app. Se trata de la tarjeta del Pokemon y su vista detalle. Renderiza diferentes versiones según el `viewMode` prop (grid o lista) y al hacer click abre el modal con toda la información detallada del mismo Pokemon.
 
 `PokemonModal` (`src/components/PokemonModal/PokemonModal.tsx`) funciona como un contenedor vacío que recibe todo el contenido desde `PokemonCard`. Maneja las animaciones de entrada/salida con el estado `isClosing`, que se activa cuando se va a cerrar el modal, disparando la animación de salida con un timeout antes de cerrar realmente el modal y limpiar el estado. También bloquea scroll en desktop pero no en móvil, y está suscrito a `ThemeContext`.
 
-`PokemonType` (`src/components/PokemonType/PokemonType.tsx`) muestra el tipo del Pokémon, y `PokemonStatBar` (`src/components/PokemonStatBar/PokemonStatBar.tsx`) muestra barras de progreso para sus stats de vida, ataque y defensa. Ambos reciben sus props de `pokemon` en `PokemonCard`, que contiene todos los datos.
+`PokemonType` (`src/components/PokemonType/PokemonType.tsx`) muestra el tipo del Pokemon, y `PokemonStatBar` (`src/components/PokemonStatBar/PokemonStatBar.tsx`) muestra barras de progreso para sus stats de vida, ataque y defensa. Ambos reciben sus props de `pokemon` en `PokemonCard`, que contiene todos los datos.
 
 Para los favoritos, `PokemonCard` tiene un estado local `isFavorite` que controla si el botón de corazón aparece lleno o vacío. Cuando haces click, se ejecuta `togglePokemonFavorite()` que cambia el estado local, actualiza `localStorage` y actualiza el estado en el padre con `onFavoritesChange` manteniendo los favoritos sincronizados.
 
@@ -150,17 +150,17 @@ src/components/
 
 La `Pokedex` (`src/components/Pokedex/Pokedex.tsx`) es el sistema nervioso de la app. Alberga el fetch del API, el mapeo de los pokemon, los controles de vista y favoritos, y la paginación. También es desde donde se maneja la mayor parte de la lógica de estado:
 
-- `pokemon`: array que contiene los Pokémon que se están mostrando actualmente
+- `pokemon`: array que contiene los Pokemon que se están mostrando actualmente
 - `isLoading` y `error`: manejan los estados de carga y errores de la API
 - `viewMode`: controla si se muestran las cards en formato grid o lista (persiste en localStorage)
-- `showPokemon`: determina si se muestran todos los Pokémon o solo favoritos
+- `showPokemon`: determina si se muestran todos los Pokemon o solo favoritos
 - `favorites`: mantiene sincronizado el estado local con lo guardado en localStorage
 
-El fetch de los Pokémon está en el `useEffect` principal que se dispara cuando cambian `showPokemon`, `favorites` o cambia la página. Lo que hace es determinar qué IDs de Pokémon necesita cargar según si estamos en modo "todos" o "favoritos", usa la función utility `getPaginatedIds` para obtener solo los IDs de la página actual (evitando cargar todo de una vez), y luego llama a `fetchMultiplePokemon` que hace las llamadas a la API en paralelo, actualiza el estado `pokemon`, y finalmente se mapea este array para renderizar cada `PokemonCard` con sus datos y callbacks.
+El fetch de los Pokemon está en el `useEffect` principal que se dispara cuando cambian `showPokemon`, `favorites` o cambia la página. Lo que hace es determinar qué IDs de Pokemon necesita cargar según si estamos en modo "todos" o "favoritos", usa la función utility `getPaginatedIds` para obtener solo los IDs de la página actual (evitando cargar todo de una vez), y luego llama a `fetchMultiplePokemon` que hace las llamadas a la API en paralelo, actualiza el estado `pokemon`, y finalmente se mapea este array para renderizar cada `PokemonCard` con sus datos y callbacks.
 
 `PokedexControls` (`src/components/PokedexControls/PokedexControls.tsx`) agrupa los controles de la interfaz para cambiar entre todos/favoritos y vista de grid/lista.
 
-La `Pagination` (`src/components/Pagination/Pagination.tsx`) pinta una numeración inteligente que permite navegar entre las páginas de Pokémon.
+La `Pagination` (`src/components/Pagination/Pagination.tsx`) pinta una numeración inteligente que permite navegar entre las páginas de Pokemon.
 
 ## Funcionalidades avanzadas
 
