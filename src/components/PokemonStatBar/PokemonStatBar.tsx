@@ -14,16 +14,16 @@ export const PokemonStatBar = ({ type, value }: PokemonStatBarProps) => {
   const { theme } = useTheme();
 
   let iconType: IconName = 'Heart';
-  let maxRange = 150;
+  let maxRange = 170;
 
   if (type === 'attack') {
     iconType = 'Arm';
-    maxRange = 165;
+    maxRange = 170;
   }
 
   if (type === 'defense') {
     iconType = 'Shield';
-    maxRange = 168;
+    maxRange = 170;
   }
 
   return (
