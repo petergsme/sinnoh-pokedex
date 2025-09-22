@@ -10,6 +10,12 @@
   gap: var(--gap-20);
 }
 
+@mixin mobile-up {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
 .pokeCard {
   display: flex;
   align-items: center;
@@ -46,7 +52,15 @@
     }
   }
 
-  &:hover {
+  @include mobile-up {
+    &:hover {
+      color: var(--text-onprimary-darkmode);
+      background: var(--bg-activeElement);
+      transform: translateY(-1px);
+    }
+  }
+
+  &:active {
     color: var(--text-onprimary-darkmode);
     background: var(--bg-activeElement);
   }
@@ -92,5 +106,3 @@
     gap: var(--gap-8);
   }
 }
-
-// MISSING LIST CHANGE CLASS.
